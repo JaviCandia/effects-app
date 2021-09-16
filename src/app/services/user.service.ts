@@ -13,7 +13,14 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers() {
-    return this.http.get<User[]>(`${this.basePath}/users?per_page=6`)
+    return this.http.get<User[]>(`${this.basePath}/users?per_page=6&delay=1`)
+      .pipe(
+        map((resp: any) => resp['data'])
+      );
+  }
+
+  getUserById( id: string) {
+    return this.http.get<User>(`${this.basePath}/users/${id}`)
       .pipe(
         map((resp: any) => resp['data'])
       );

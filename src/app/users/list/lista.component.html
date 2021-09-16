@@ -1,4 +1,16 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="alert alert-info text-center" role="alert" *ngIf="loading">
+  <h4 class="alert-heading">Loading...</h4>
+  <i class="fa fa-sync fa-spin fa-2x"></i>
+</div>
+
+<div class="alert alert-danger text-center" role="alert" *ngIf="error">
+  <h4 class="alert-heading">Error</h4>
+  <pre>
+    {{ error | json }}
+  </pre>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="!loading">
   <div class="col" *ngFor="let user of users">
     <div class="card">
       <img [src]="user.avatar" class="card-img-top" alt="..." />
@@ -9,7 +21,7 @@
           to additional content. This content is a little bit longer.
         </p>
         <p class="card-text">
-            <span class="text-muted"> ID: {{user.id}} </span>
+          <span class="text-muted"> ID: {{ user.id }} </span>
         </p>
       </div>
     </div>

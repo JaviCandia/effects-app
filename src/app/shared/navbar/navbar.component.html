@@ -27,12 +27,12 @@
           class="form-control me-2"
           type="search"
           placeholder="Buscar"
+          (keyup.enter)="goUser(txtInput.value)"
         />
         <button
           class="btn btn-outline-success"
           type="button"
           (click)="goUser(txtInput.value)"
-          (keyup.enter)="goUser(txtInput.value)"
         >
           Buscar
         </button>
